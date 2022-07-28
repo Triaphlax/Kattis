@@ -1,15 +1,13 @@
 def dfs_iterative(graph, start):
     stack = [start]
     path = set()
-    sum = 0
 
     while stack:
         node = stack.pop()
         if node in path:
             continue
         path.add(node)
-        sum += graph[node][0]
-        for neighbor in graph[node][1]:
+        for neighbor in graph[node]:
             stack.append(neighbor)
 
     return (path, sum)
