@@ -1,3 +1,6 @@
+import sys
+
+
 def dfs_iterative_weak_vertices(graph, start):
     stack = [(start, -1, -1)]
     visited = set()
@@ -8,7 +11,7 @@ def dfs_iterative_weak_vertices(graph, start):
         node = tuple[0]
         oneAgo = tuple[1]
         twoAgo = tuple[2]
-        if twoAgo >= 0 and twoAgo in graph[node]:
+        if twoAgo >= 0 and twoAgo != node and twoAgo in graph[node]:
             triangleNodes.update([node, oneAgo, twoAgo])
         if node in visited:
             continue
@@ -19,13 +22,15 @@ def dfs_iterative_weak_vertices(graph, start):
     return (visited, triangleNodes)
 
 
-import sys
+############################
+sys.stdin = open('Python\Python\TEST\TestFile.txt', 'r')
+############################
 
 while True:
     nofNodes = int(sys.stdin.readline())
     if nofNodes == -1:
         break
-    
+
     nodesLeftToVisit = set(range(nofNodes))
     graph = {new_list: [] for new_list in range(nofNodes)}
 
@@ -38,7 +43,8 @@ while True:
     nodesLeftToVisit = set(range(nofNodes))
     potentialWeakNodes = set(range(nofNodes))
     while not len(nodesLeftToVisit) == 0:
-        nodesVisited, triangleNodes = dfs_iterative_weak_vertices(graph, nodesLeftToVisit.pop())
+        nodesVisited, triangleNodes = dfs_iterative_weak_vertices(
+            graph, nodesLeftToVisit.pop())
         nodesLeftToVisit = nodesLeftToVisit.difference(nodesVisited)
         potentialWeakNodes = potentialWeakNodes.difference(triangleNodes)
 
