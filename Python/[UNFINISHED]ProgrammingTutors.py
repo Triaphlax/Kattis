@@ -18,10 +18,9 @@ class Edge:
         self.Student = Student
         self.Tutor = Tutor
 
+    def __lt__(self, _):
+        return True
 
-##########################
-sys.stdin = open('Python/Python/TEST/TestFile.txt', 'r')
-##########################
 
 nofStudentsTutors = int(sys.stdin.readline())
 
@@ -45,9 +44,7 @@ for student in students:
         distance = abs(studentObject.PositionX - tutorObject.PositionX) + \
             abs(studentObject.PositionY - tutorObject.PositionY)
         edgeObject = Edge(distance, student, tutor)
-        edges.put((distance, edgeObject))
-
-# edges.sort(reverse=True)
+        edges.put((-distance, edgeObject))
 
 highestEdge = 0
 while not edges.empty():
@@ -56,7 +53,6 @@ while not edges.empty():
             tutors[edge.Tutor].PossiblePartners == 1:
         if edge.Distance > highestEdge:
             highestEdge = edge.Distance
-        print(dir(edge))
     students[edge.Student].OneFewer()
     tutors[edge.Tutor].OneFewer()
 
