@@ -10,7 +10,22 @@ def dfs_iterative(graph, start):
         for neighbor in graph[node]:
             stack.append(neighbor)
 
-    return (path, sum)
+    return (path)
+
+# def bfs_iterative(graph, start):
+#     stack = [start]
+#     discovered = set()
+
+#     while stack:
+#         node = stack.pop()
+#         discovered.add(node)
+#         for neighbor in graph[node]:
+#             if not neighbor in discovered:
+#                 discovered(neighbor)
+#                 stack.append(neighbor)
+
+#     return (discovered)
+    
 
 
 allNodesToVisit = set(range(nofNodes))
