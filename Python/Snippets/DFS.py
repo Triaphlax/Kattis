@@ -10,14 +10,18 @@ def dfs_iterative(graph, start):
         for neighbor in graph[node]:
             stack.append(neighbor)
 
-    return (path, sum)
+    return (path)
 
+# def dfs_iterative(graph, start):
+#     stack = [start]
+#     discovered = set()
 
-allNodesToVisit = set(range(nofNodes))
-graph = {new_list: [] for new_list in range(nofNodes)}
+#     while stack:
+#         node = stack.pop()
+#         discovered.add(node)
+#         for neighbor in graph[node]:
+#             if not neighbor in discovered:
+#                 discovered(neighbor)
+#                 stack.append(neighbor)
 
-for road in range(nofRoads):
-    road = list(map(int, sys.stdin.readline().strip().split(' ')))
-    for endpointIndex in [0,1]:
-        otherEndpointIndex = (endpointIndex + 1) % 2
-        graph[road[endpointIndex]].append(road[otherEndpointIndex])
+#     return (discovered)
