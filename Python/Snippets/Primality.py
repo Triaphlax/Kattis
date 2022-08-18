@@ -12,3 +12,5 @@ def isPrime(n):
     for i in range(5, math.sqrt(n), 6):
         if n % i == 0 or n % (i + 2) == 0:
             return False
+
+    return True
