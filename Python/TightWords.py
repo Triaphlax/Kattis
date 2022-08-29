@@ -6,11 +6,11 @@ for line in input:
     settings = list(map(int, line.strip().split(' ')))
     alphabetSize = settings[0] + 1
     wordLength = settings[1]
-    subsolutionTable = [ [float("-inf")]*alphabetSize for _ in [0,1]] 
+    subsolutionTable = [ [float("-inf")]*alphabetSize for _ in [0,1]] # subsolutions are number of tight words of a certain length ending in certain character
 
     for currentPosition in range(wordLength):
         currentIndex = currentPosition % 2
-        otherIndex = (currentIndex + 1) % 2 # subsolutions are number of tight words of length l ending in character c
+        otherIndex = (currentIndex + 1) % 2 
 
         for i in range(alphabetSize):
             subsolution = -1
