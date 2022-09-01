@@ -14,21 +14,21 @@ for line in lines:
     for i in range(nofOptions):
         optionsList.append(settings[2 + i])
 
-    resultDict = {0: -1, 1: 1}
+    resultDict = [False, True]
     for subsolutionStones in range(2, nofStones+1):
-        bestResult = -1
+        bestResult = False
         for option in optionsList:
             if option > subsolutionStones:
                 continue
             else:
-                currentResult = -1 * resultDict[subsolutionStones - option]
-                if currentResult == 1:
-                    bestResult = 1
+                currentResult = not resultDict[subsolutionStones - option]
+                if currentResult:
+                    bestResult = True
                     break
-        resultDict[subsolutionStones] = bestResult
+        resultDict.append(bestResult)
 
     finalResult = resultDict[nofStones]
-    if finalResult == 1:
+    if finalResult:
         print("Stan wins")
     else:
         print("Ollie wins")
