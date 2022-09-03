@@ -1,3 +1,5 @@
 *.pdf
 *.lnk
 .vscode
+C\#/bin/
+C\#/obj/
