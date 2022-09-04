@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+// This gives a run-time error on Kattis for some reason
+
 namespace Kattis
 {
     public class Node
@@ -48,9 +50,9 @@ namespace Kattis
         }
     }
 
-    class Brexit
+    public static class Brexit
     {
-        static void Main(string[] args)
+        public static void Solve()
         {
             int[] settings = Array.ConvertAll(Console.ReadLine().Split(' '), s => int.Parse(s));
             int nofCountries = settings[0];

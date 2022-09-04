@@ -1,0 +1,11 @@
+using System;
+
+namespace Kattis
+{
+    public static class TEMPLATE
+    {
+        public static void Solve()
+        {
+        }
+    }
+}
