@@ -1,4 +1,3 @@
-from inspect import istraceback
 import sys
 
 def no_cycles_iterative(graph, start):
@@ -50,10 +49,6 @@ def toposort_iterative(graph, start):
             resultStack.append(currentNode)
 
     return visitedInThisRun
-
-############################
-sys.stdin = open('TEST/TestFile.txt', 'r')
-############################
 
 settings = list(map(int, sys.stdin.readline().strip().split(' ')))
 nofSticks = settings[0]

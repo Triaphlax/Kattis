@@ -21,3 +21,4 @@ def toposort_iterative(graph, start):
     return visitedInThisRun
 
 alreadyVisited = set()
+resultStack = []
