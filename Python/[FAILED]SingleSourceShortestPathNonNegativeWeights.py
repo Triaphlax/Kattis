@@ -1,10 +1,6 @@
 import sys
 import queue
 
-#############################
-sys.stdin = open('TEST/TestFile.txt', 'r')
-#############################
-
 class Graph:
     def __init__(self, source, nofNodes):
         self.nodeDict = {}
