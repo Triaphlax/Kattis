@@ -3,11 +3,11 @@ def bfs_iterative(graph, start):
     discovered = set()
 
     while queue:
-        node = queue.pop(0)
+        node = queue.pop()
         discovered.add(node)
         for neighbor in graph[node]:
             if not neighbor in discovered:
                 discovered.add(neighbor)
-                queue.append(neighbor)
+                queue = [neighbor] + queue
 
     return (discovered)
