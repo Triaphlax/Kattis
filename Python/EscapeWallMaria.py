@@ -1,7 +1,9 @@
 import sys
 
+
 def isBorder(x, y):
     return x == 0 or y == 0 or x == width - 1 or y == length - 1
+
 
 def bfs_iterative_escape_wall_maria(start):
     queue = [(start, 0)]
@@ -16,8 +18,8 @@ def bfs_iterative_escape_wall_maria(start):
 
         if steps > timeLimit:
             break
-        
-        for step in [(0,1), (1,0), (0,-1), (-1,0)]:
+
+        for step in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
             neighborCoordinates = (node[0] + step[0], node[1] + step[1])
             square = wallMaria[neighborCoordinates[1]][neighborCoordinates[0]]
 
@@ -40,11 +42,13 @@ def bfs_iterative_escape_wall_maria(start):
 
     return -1
 
+
 ######################
-sys.stdin = open('TEST/TestFile.txt', 'r')
+sys.stdin = open('/TEST/TestFile.txt', 'r')
 ######################
 
-timeLimit, length, width = list(map(int, sys.stdin.readline().strip().split(' ')))
+timeLimit, length, width = list(
+    map(int, sys.stdin.readline().strip().split(' ')))
 
 wallMaria = []
 sLocation = (-1, -1)
