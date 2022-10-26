@@ -1,6 +1,7 @@
 import random
 
 f = open("TEST/ThePaladin_Test.txt", 'a')
+f.truncate(0)
 
 letters = "abcdefghijklmnopqrstuvwxyz"
 nofPairs = 676

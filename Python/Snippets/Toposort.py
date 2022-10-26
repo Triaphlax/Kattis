@@ -6,19 +6,26 @@ def toposort_iterative(graph, start):
         currentNode, isTraceback = stack.pop()
 
         if not isTraceback:
-            if currentNode in alreadyVisited or currentNode in visitedInThisRun:
+            if currentNode in tsAlreadyVisited or currentNode in visitedInThisRun:
                 continue
             visitedInThisRun.add(currentNode)
             partStack = []
             partStack.append((currentNode, True))
-            for neighbor in graph[currentNode]:
+            currentNodeObject = graph.retrieveNode(currentNode)
+            neighbors = currentNodeObject.getNeighbors()
+            for neighbor in neighbors:
                 partStack.append((neighbor, False))
             stack += partStack
 
         else:
-            resultStack.append(currentNode)
+            tsResultStack.append(currentNode)
 
     return visitedInThisRun
 
-alreadyVisited = set()
-resultStack = []
+tsLeftToVisit = set() # Fill in starting node list here
+tsAlreadyVisited = set()
+tsResultStack = []
+while not len(tsLeftToVisit) == 0:
+    tsVisitedThisIteration = toposort_iterative(validGraph, tsLeftToVisit.pop())
+    tsLeftToVisit = tsLeftToVisit.difference(tsVisitedThisIteration)
+    tsAlreadyVisited = tsAlreadyVisited.union(tsVisitedThisIteration)

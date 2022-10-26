@@ -1,6 +1,7 @@
 import random
 
 f = open("TEST/Brexit_Test.txt", 'a')
+f.truncate(0)
 
 nofCountries = 200000
 nofPartnerships = 199999

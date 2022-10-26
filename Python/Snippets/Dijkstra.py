@@ -1,68 +1,26 @@
-import queue
+import heapq
 
+def dijkstra(graph, source):
+    shortestDistances = {key: float("inf") for key in graph.nodeDict.keys()}
+    shortestDistances[source] = 0
 
-class Graph:
-    def __init__(self, source, nodesList):
-        self.nodeDict = {}
-        self.source = source
-        self.shortestDistFromSource = []
-        self.nofNodes = len(nodesList)
-        for nodeNumber in nodesList:
-            self.addNode(nodeNumber)
+    phq = [(0, source)]
+    heapq.heapify(phq)
 
-    def resetShortestPaths(self):
-        self.nofNodes = len(self.nodeDict)
-        self.shortestDistFromSource = [float("inf")] * self.nofNodes
+    while len(phq) != 0:
+        (distanceSoFar, node) = heapq.heappop(phq)
+        nodeObject = graph.nodeDict[node]
+        nodeObject.setVisited()
 
-    def addNode(self, nodeNumber):
-        self.node = Node(nodeNumber)
-        self.nodeDict[nodeNumber] = self.node
-
-    def addEdge(self, nodeFromNumber, nodeToNumber, edgeWeight):
-        nodeFrom = self.nodeDict[nodeFromNumber]
-        nodeFrom.addNeighbor(nodeToNumber, edgeWeight)
-
-    def getShortestPathFromSourceToNode(self, nodeNumber):
-        if nodeNumber > self.nofNodes-1:
-            return float("inf")
-        return self.shortestDistFromSource[nodeNumber]
-
-    def dijkstra(self):
-        self.resetShortestPaths()
-
-        self.shortestDistFromSource[self.source] = 0
-
-        pq = queue.PriorityQueue()
-        pq.put((0, self.source))
-
-        while not pq.empty():
-            (currentDistance, currentNodeNumber) = pq.get()
-            currentNode = self.nodeDict[currentNodeNumber]
-            currentNode.setVisited()
-
-            for neighborNodeNumber in currentNode.neighbors.keys():
-                neighborNode = self.nodeDict[neighborNodeNumber]
-                if not neighborNode.visited:
-                    travelDistance = currentNode.getDistanceToNeighbor(
-                        neighborNodeNumber)
-                    oldDistance = self.shortestDistFromSource[neighborNodeNumber]
-                    newDistance = currentDistance + travelDistance
+        for neighbor in nodeObject.neighbors.keys():
+            neighborObject = graph.nodeDict[neighbor]
+            if not neighborObject.visited:
+                distances = nodeObject.getDistancesToNeighbor(neighbor)
+                for travelDistance in distances:
+                    oldDistance = shortestDistances[neighbor]
+                    newDistance = distanceSoFar + travelDistance
                     if newDistance < oldDistance:
-                        self.shortestDistFromSource[neighborNodeNumber] = newDistance
-                        pq.put((newDistance, neighborNodeNumber))
+                        shortestDistances[neighbor] = newDistance
+                        heapq.heappush(phq, (newDistance, neighbor))
 
-
-class Node:
-    def __init__(self, nodeNumber):
-        self.nodeNumber = nodeNumber
-        self.neighbors = {}
-        self.visited = False
-
-    def addNeighbor(self, neighborNumber, edgeWeight):
-        self.neighbors[neighborNumber] = edgeWeight
-
-    def setVisited(self):
-        self.visited = True
-
-    def getDistanceToNeighbor(self, neighborNumber):
-        return self.neighbors[neighborNumber]
+    return shortestDistances

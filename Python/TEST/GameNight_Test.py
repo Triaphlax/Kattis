@@ -1,6 +1,7 @@
 import random
 
 f = open("TEST/GameNight_Test.txt", 'a')
+f.truncate(0)
 
 amount = 9999
 f.write(str(amount) + '\n')

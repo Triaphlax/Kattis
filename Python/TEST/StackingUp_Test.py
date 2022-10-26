@@ -1,6 +1,7 @@
 import random
 
 f = open("TEST/StackingUp_Test.txt", 'a')
+f.truncate(0)
 
 amount = 1000
 f.write(str(amount) + '\n')

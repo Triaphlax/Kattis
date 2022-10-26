@@ -1,16 +1,16 @@
 def dfs_iterative(graph, start):
-    stack = [start]
-    path = set()
+    dfsStack = [start]
+    discovered = set()
 
-    while stack:
-        node = stack.pop()
-        if node in path:
+    while dfsStack:
+        node = dfsStack.pop()
+        if node in discovered:
             continue
-        path.add(node)
+        discovered.add(node)
         for neighbor in graph[node]:
-            stack.append(neighbor)
+            dfsStack.append(neighbor)
 
-    return (path)
+    return discovered
 
 # def dfs_iterative(graph, start):
 #     stack = [start]
