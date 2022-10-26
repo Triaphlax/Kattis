@@ -1,0 +1,8 @@
+* max takes kinda long whoda thunk
+* also lambdas take a while holy shit. Mostly don't try to put them in loops
+* with dynamic programming, try to do take paths that give a solution asap
+* If a question only asks for the amount of a configuration, it's probably dynamic programming
+* Graph traversal with multiplication, do with logarithms
+* When you get Wrong Answer, really think about edge cases, and combinations where inputs are at edge cases
+* If need to round up for positive integers, do division on the negatives and use //
+* Make notes of parts of program you feel iffy about, and test those thoroughly

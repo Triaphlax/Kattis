@@ -1,1 +1,1 @@
-py -m cProfile %1
+py -m cProfile -s cumtime %1
