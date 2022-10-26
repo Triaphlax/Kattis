@@ -13,6 +13,7 @@ def perform_BFS(s, t, parent):
 
     return t in discovered
 
+
 def ford_fulkerson(source, target):
     parent = [-1] * nofNodes
     max_flow = 0
@@ -22,7 +23,8 @@ def ford_fulkerson(source, target):
         path_flow = float("Inf")
         nodeInPath = target
         while(nodeInPath != source):
-            path_flow = min(path_flow, fullGraph[parent[nodeInPath]][nodeInPath])
+            path_flow = min(
+                path_flow, fullGraph[parent[nodeInPath]][nodeInPath])
             nodeInPath = parent[nodeInPath]
 
         max_flow += path_flow
@@ -38,11 +40,11 @@ def ford_fulkerson(source, target):
 
 
 fullGraph = [[0, 8, 0, 0, 3, 0],
-            [0, 0, 9, 0, 0, 0],
-            [0, 0, 0, 0, 7, 2],
-            [0, 0, 0, 0, 0, 5],
-            [0, 0, 7, 4, 0, 0],
-            [0, 0, 0, 0, 0, 0]]
+             [0, 0, 9, 0, 0, 0],
+             [0, 0, 0, 0, 7, 2],
+             [0, 0, 0, 0, 0, 5],
+             [0, 0, 7, 4, 0, 0],
+             [0, 0, 0, 0, 0, 0]]
 nofNodes = len(fullGraph)
 
 source = 0

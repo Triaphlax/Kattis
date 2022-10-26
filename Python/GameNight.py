@@ -10,8 +10,9 @@ def compareDifferencesStrings(s, t):
                 differences += 1
         return differences
 
-people = int(sys.stdin.readline().strip())
-seating = sys.stdin.readline().strip()
+
+people = int(input())
+seating = input()
 
 nofAs = seating.count('A')
 nofBs = seating.count('B')
@@ -48,26 +49,32 @@ ACBDict = {
     'CB': +1,
     'CC': -1}
 
-#ABC
+# ABC
 for startingIndex in range(len(seating)):
     if startingIndex == 0:
         diffScore = compareDifferencesStrings(seating, ABCstring)
     else:
-        diffPartA = ABCDict['A' + seating[(finalAinABC + startingIndex) % people]] 
-        diffPartB = ABCDict['B' + seating[(finalBinABC + startingIndex) % people]] 
-        diffPartC = ABCDict['C' + seating[(finalCinABC + startingIndex) % people]]
+        diffPartA = ABCDict['A' +
+                            seating[(finalAinABC + startingIndex) % people]]
+        diffPartB = ABCDict['B' +
+                            seating[(finalBinABC + startingIndex) % people]]
+        diffPartC = ABCDict['C' +
+                            seating[(finalCinABC + startingIndex) % people]]
         diffScore = diffScore + diffPartA + diffPartB + diffPartC
     if bestResult > diffScore:
         bestResult = diffScore
 
-#ACB
+# ACB
 for startingIndex in range(len(seating)):
     if startingIndex == 0:
         diffScore = compareDifferencesStrings(seating, ACBstring)
     else:
-        diffPartA = ACBDict['A' + seating[(finalAinACB + startingIndex) % people]] 
-        diffPartB = ACBDict['B' + seating[(finalBinACB + startingIndex) % people]] 
-        diffPartC = ACBDict['C' + seating[(finalCinACB + startingIndex) % people]]
+        diffPartA = ACBDict['A' +
+                            seating[(finalAinACB + startingIndex) % people]]
+        diffPartB = ACBDict['B' +
+                            seating[(finalBinACB + startingIndex) % people]]
+        diffPartC = ACBDict['C' +
+                            seating[(finalCinACB + startingIndex) % people]]
         diffScore = diffScore + diffPartA + diffPartB + diffPartC
     if bestResult > diffScore:
         bestResult = diffScore
